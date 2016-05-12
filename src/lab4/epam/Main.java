@@ -6,8 +6,8 @@ package lab4.epam;
 public class Main {
 
     public static void main(String[] args) {
-        Model m = new Model();
-        m.check("Zakrevskogo");
+        Controller controller = new Controller();
+        controller.userProcess();
     }
 
 }

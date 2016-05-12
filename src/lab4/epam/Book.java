@@ -20,6 +20,11 @@ public class Book {
     public String index, city, street, houseNumber, flatNumber;
     public String addDate;
     public String lastUpdate;
+    private boolean recorded;
+
+    public void record(){ this.recorded = true; }
+
+    public boolean isRecorded(){ return this.recorded; }
 
     public void setIndex(String index) {
         this.index = index;
