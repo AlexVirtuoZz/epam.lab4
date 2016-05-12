@@ -4,27 +4,22 @@ package lab4.epam;
  * Created by virtuoz on 12.05.16.
  */
 public class Book {
-    //
-    public String firstName;
-    public String secondName;
-    public String thirdName;
-    public StringBuilder fio;
-    public String nickName;
-    public String comment;
-    public String group;
-    public String homePhoneNumber;
-    public String cellPhoneNumber;
-    public String email;
-    public String skype;
-    public StringBuilder address;
-    public String index, city, street, houseNumber, flatNumber;
-    public String addDate;
-    public String lastUpdate;
-    private boolean recorded;
-
-    public void record(){ this.recorded = true; }
-
-    public boolean isRecorded(){ return this.recorded; }
+    //All needed values declare
+    private String firstName;
+    private String secondName;
+    private String thirdName;
+    private String fio;
+    private String nickName;
+    private String comment;
+    private String group;
+    private String homePhoneNumber;
+    private String cellPhoneNumber;
+    private String email;
+    private String skype;
+    private String address;
+    private String index, city, street, houseNumber, flatNumber;
+    private String createDate;
+    private String lastUpdate;
 
     public void setIndex(String index) {
         this.index = index;
@@ -56,14 +51,6 @@ public class Book {
 
     public void setLastUpdate(String lastUpdate) {
         this.lastUpdate = lastUpdate;
-    }
-
-    public void setAddDate(String addDate) {
-        this.addDate = addDate;
-    }
-
-    public void setAddress(StringBuilder address) {
-        this.address = address;
     }
 
     public void setSkype(String skype) {
@@ -98,11 +85,12 @@ public class Book {
         this.thirdName = thirdName;
     }
 
+    public String getFio() { return this.fio; }
+
     String regexFio = "[A-Z][a-z]+";
     String regexNickName = "[A-Za-z0-9]+[\\._-]?[A-Za-z0-9]*";
     String regexComment = ".*";
-    String regexHomePhoneNumber = "\\+38044\\d{7}";
-    String regexCellPhoneNumber = "\\+380\\d{9}";
+    String regexPhoneNumber = "\\+380\\d{9}";
     String regexEmail = "[A-Za-z0-9]+[\\._-]?[A-Za-z0-9]*\\@[a-z]+\\.[a-z]+";
     String regexSkype = regexNickName;
     String regexIndex = "\\d{5}";
@@ -112,16 +100,20 @@ public class Book {
     String regexFlatNumber = regexHouseNumber;
     String regexDates = "\\d{2}\\.\\d{2}\\.\\d{4}";
 
-    void concatFullAddress(){
+    public void concatFullAddress(){
         address = null;
-        address.append(index).append(" ,").append(city).append(" ,").append(street).append(" ,").append(houseNumber).append(" ,").append(flatNumber);
+        address = new StringBuilder().append(index).append(" ,").append(city).append(" ,").append(street).append(" ,").append(houseNumber).append(" ,").append(flatNumber).toString();
     }
-    void concatShortAddress(){
+    public void concatShortAddress(){
         address = null;
-        address.append(city).append(" ,").append(street).append(" ,").append(houseNumber);
+        address = new StringBuilder().append(city).append(" ,").append(street).append(" ,").append(houseNumber).toString();
     }
-    void concatFio(){
+    public void concatFio(){
         fio = null;
-        fio.append(secondName).append(" ").append(firstName.charAt(0)).append("\\. ").append(thirdName.charAt(0)).append("\\.");
+        fio = new StringBuilder().append(secondName).append(" ").append(firstName.charAt(0)).append(". ").append(thirdName.charAt(0)).append(".").toString();
+    }
+    @Override
+    public String toString(){
+        return new StringBuilder(fio.toString()).append("\n"+nickName).append("\n"+skype).append("\n"+address).append("\n"+email).append("\n"+cellPhoneNumber).toString();
     }
 }
