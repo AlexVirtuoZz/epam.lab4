@@ -6,8 +6,10 @@ package lab4.epam;
 public class Main {
 
     public static void main(String[] args) {
+        //Initialize and run controller
         Controller controller = new Controller();
         controller.userProcess();
+
     }
 
 }
